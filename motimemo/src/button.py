@@ -10,9 +10,11 @@ def dialy_create_button():
 
         #style
         '日記を書く',
-        height="48px",
-        background_color=ac.sub(),
-        color=ac.accent(),
+        style = {
+            "height" : "48px",
+            "background_color" : "rgba(167,159,138,1)",
+            "color" : "rgba(255,255,255,1)"
+        },
 
         #onClick
         on_click = rx.redirect(

@@ -1,11 +1,10 @@
 """Welcome to Reflex! This file outlines the steps to create a basic app."""
 
-from motimemo.components import header,button
-from motimemo.options.app_color import AppColor
+from motimemo.src import const,component
 
 import reflex as rx
 
-ac = AppColor()
+cp = component.Component()
 
 
 
@@ -18,9 +17,8 @@ def index() -> rx.Component:
     page : ホーム
     """
     return rx.vstack(
-        header.app_header(),
-        button.dialy_create_button(),
-        height="100vh",
+        cp.app_header(),
+        min_height="100vh"
     )
 
 @rx.page(route = "/create" , title = "motimemo | create")
@@ -28,14 +26,18 @@ def create() -> rx.Component:
     """
     page : 日記作成画面
     """
-    return rx.vstack(height="100vh")
+    return rx.vstack(
+        cp.app_header(),
+        cp.dialy_create_dialog(),
+        min_height="100vh"
+    )
     
 
 style = {
     "font_family" : "Noto Sans JP",
     "font_size" : "16px",
-    "background_color" : ac.base(),
-    "padding" : "16px"
+    "background_color" : const.AppColor.base(),
+    
 }
 
 app = rx.App(style = style)
