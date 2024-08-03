@@ -1,11 +1,11 @@
 """Welcome to Reflex! This file outlines the steps to create a basic app."""
 
-from motimemo.src import const,component
+from motimemo.src import const,component,table
 
 import reflex as rx
 
 cp = component.Component()
-
+table.QueryModel.make_table()
 
 
 class State(rx.State):
@@ -18,7 +18,8 @@ def index() -> rx.Component:
     """
     return rx.vstack(
         cp.app_header(),
-        min_height="100vh"
+        min_height="100vh",
+        padding="16px"
     )
 
 @rx.page(route = "/create" , title = "motimemo | create")
@@ -29,7 +30,8 @@ def create() -> rx.Component:
     return rx.vstack(
         cp.app_header(),
         cp.dialy_create_dialog(),
-        min_height="100vh"
+        min_height="100vh",
+        padding="16px"
     )
     
 

@@ -1,7 +1,7 @@
 import os
 
 # プロジェクトの相対パス
-base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def sqlite_db():
     return os.path.join(base_path, "dialy.db")

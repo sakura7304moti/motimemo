@@ -89,21 +89,24 @@ class Component:
         rx.vstack(
             #1行目
             rx.flex(
-                #タイトル
-                rx.input(
-                    placeholder="タイトル",
-                    id="title",
-                    style = {
-                        "width" : "100%"
-                    }
+                rx.box(
+                        #タイトル
+                    rx.input(
+                        placeholder="タイトル",
+                        id="title",
+                    ),
+                    width="70%"
                 ),
-                #今日の日付
-                rx.input(
-                    type_="date",
-                    id="date",
-                    default_value=self.get_today_text()
+                rx.box(
+                    #今日の日付
+                    rx.input(
+                        type_="date",
+                        id="date",
+                        default_value=self.get_today_text()
+                    ),
+                    width="30%",align="right"
                 )
-                ,spacing="5"
+                ,width="100%",spacing="5"
             ),
 
             #2行目 内容
@@ -112,7 +115,7 @@ class Component:
                 id="detail",
                 style = {
                     "width" : "100%",
-                    "height" : "300px"
+                    "height" : "250px"
                 }
             ),
 
@@ -140,12 +143,14 @@ class Component:
         return rx.vstack(
             rx.upload(
                 rx.vstack(
-                    rx.button("Select File", color=color, bg="white", border=f"1px solid {color}"),
-                    rx.text("ファイルドロップ・クリック", color="rgba(200,200,200,1)"),
+                    rx.button("ファイル選択", color=color, bg="white", border=f"1px solid {color}"),
+                    rx.text("画像をドロップ", color="rgba(200,200,200,1)"),
+                    align="center"
                 ),
                 id="photo",
                 border=f"1px dotted {color}",
-                padding="5em",
+                padding="4em",
+                width="100%"
             ),
             rx.hstack(rx.foreach(rx.selected_files("photo"), rx.text)),
             
@@ -160,5 +165,5 @@ class Component:
                 background_color = "rgba(200,200,200,1)"
             ),
             rx.foreach(PhotoState.img, lambda img: rx.image(src=rx.get_upload_url(img))),
-            padding="5em",
+            padding_top="16px",padding_bottom="16px",width="100%"
         )
